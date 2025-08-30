@@ -613,7 +613,7 @@ const ProductsPage = () => {
                                         size={16} 
                                         className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" 
                                     />
-                                    <input
+                                    <Input
                                         type="text"
                                         placeholder="Buscar produtos..."
                                         value={searchQuery}
