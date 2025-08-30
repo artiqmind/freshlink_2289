@@ -215,17 +215,11 @@ const ClientProfile = () => {
               {/* Profile Image */}
               <div className="flex items-center space-x-6">
                 <div className="relative">
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id="remember-me"
-                        checked={formData.rememberMe}
-                        onCheckedChange={(checked) => handleInputChange('rememberMe', checked)}
-                      />
-                      <Label htmlFor="remember-me" className="text-sm font-medium">
-                        Lembrar de mim
-                      </Label>
-                    </div>
-                  </div>
+                  <Image
+                    src={profileData.profileImage}
+                    alt="Foto do perfil"
+                    className="w-20 h-20 rounded-full object-cover"
+                  />
                   {isEditing && (
                     <button
                       onClick={() => fileInputRef.current?.click()}
