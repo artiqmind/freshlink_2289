@@ -618,7 +618,7 @@ const ProductsPage = () => {
                                         placeholder="Buscar produtos..."
                                         value={searchQuery}
                                         onChange={(e) => handleSearch(e.target.value)}
-                                        className="w-full pl-9 pr-4 py-2 bg-background border border-border rounded-lg text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                        
                                     />
                                     {searchQuery && (
                                         <button
