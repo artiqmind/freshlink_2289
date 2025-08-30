@@ -7,6 +7,7 @@ import ProductModal from '../../components/ui/ProductModal';
 import Icon from '../../components/AppIcon';
 import Image from '../../components/AppImage';
 import Button from '../../components/ui/shadcn/button';
+import Input from '../../components/ui/shadcn/input';
 
 const ProductsPage = () => {
     const navigate = useNavigate();
