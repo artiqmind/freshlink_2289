@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Input from '../../../components/ui/Input';
 import Select from '../../../components/ui/Select';
 import Button from '../../../components/ui/Button';
+import { Textarea } from '../../../components/ui/shadcn/textarea';
 
 const BusinessStep = ({ formData, setFormData, onNext, onBack }) => {
   const [errors, setErrors] = useState({});
@@ -111,20 +112,16 @@ const BusinessStep = ({ formData, setFormData, onNext, onBack }) => {
         />
 
         <div>
-          <label className="block text-sm font-body font-medium text-foreground mb-2">
-            Descrição do negócio *
-          </label>
-          <textarea
+          <Textarea
+            label="Descrição do negócio"
+            required
             placeholder="Descreva seus produtos, experiência e diferenciais. Mínimo 50 caracteres."
             value={formData?.businessDescription || ''}
             onChange={(e) => handleInputChange('businessDescription', e?.target?.value)}
             rows={4}
-            className="w-full px-3 py-2 bg-background border border-border rounded-lg text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none"
+            error={errors?.businessDescription}
           />
           <div className="flex justify-between items-center mt-1">
-            {errors?.businessDescription && (
-              <p className="text-error text-sm font-caption">{errors?.businessDescription}</p>
-            )}
             <p className="text-xs font-caption text-muted-foreground ml-auto">
               {(formData?.businessDescription || '')?.length}/500
             </p>

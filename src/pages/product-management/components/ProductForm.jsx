@@ -4,7 +4,9 @@ import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
 import Input from '../../../components/ui/Input';
 import Select from '../../../components/ui/Select';
-import { Checkbox } from '../../../components/ui/Checkbox';
+import { Checkbox } from '../../../components/ui/shadcn/checkbox';
+import { Label } from '../../../components/ui/shadcn/label';
+import { Textarea } from '../../../components/ui/shadcn/textarea';
 
 const ProductForm = ({ product, onSave, onCancel, isEditing = false }) => {
   const [formData, setFormData] = useState({
@@ -171,15 +173,12 @@ const ProductForm = ({ product, onSave, onCancel, isEditing = false }) => {
       />
 
       <div>
-        <label className="block text-sm font-body font-medium text-foreground mb-2">
-          Descrição
-        </label>
-        <textarea
+        <Textarea
+          label="Descrição"
           placeholder="Descreva seu produto, origem, características especiais..."
           value={formData?.description}
           onChange={(e) => handleInputChange('description', e?.target?.value)}
           rows={4}
-          className="w-full px-3 py-2 border border-border rounded-lg text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
         />
       </div>
 
@@ -319,19 +318,37 @@ const ProductForm = ({ product, onSave, onCancel, isEditing = false }) => {
       />
 
       <div className="space-y-4">
-        <Checkbox
-          label="Produto sazonal"
-          description="Marque se este produto tem disponibilidade limitada por época do ano"
-          checked={formData?.isSeasonal}
-          onChange={(e) => handleInputChange('isSeasonal', e?.target?.checked)}
-        />
+        <div className="space-y-2">
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id="seasonal"
+              checked={formData?.isSeasonal}
+              onCheckedChange={(checked) => handleInputChange('isSeasonal', checked)}
+            />
+            <Label htmlFor="seasonal" className="text-sm font-medium">
+              Produto sazonal
+            </Label>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Marque se este produto tem disponibilidade limitada por época do ano
+          </p>
+        </div>
 
-        <Checkbox
-          label="Produto visível"
-          description="Desmarque para ocultar temporariamente este produto"
-          checked={formData?.isVisible}
-          onChange={(e) => handleInputChange('isVisible', e?.target?.checked)}
-        />
+        <div className="space-y-2">
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id="visible"
+              checked={formData?.isVisible}
+              onCheckedChange={(checked) => handleInputChange('isVisible', checked)}
+            />
+            <Label htmlFor="visible" className="text-sm font-medium">
+              Produto visível
+            </Label>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Desmarque para ocultar temporariamente este produto
+          </p>
+        </div>
       </div>
     </div>
   );

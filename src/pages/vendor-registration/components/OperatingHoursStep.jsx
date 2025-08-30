@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Button from '../../../components/ui/Button';
 import Select from '../../../components/ui/Select';
-import { Checkbox } from '../../../components/ui/Checkbox';
+import { Checkbox } from '../../../components/ui/shadcn/checkbox';
+import { Label } from '../../../components/ui/shadcn/label';
 import Icon from '../../../components/AppIcon';
 
 const OperatingHoursStep = ({ formData, setFormData, onNext, onBack, onComplete }) => {
@@ -157,11 +158,15 @@ const OperatingHoursStep = ({ formData, setFormData, onNext, onBack, onComplete 
                   onChange={(e) => handleDayToggle(day?.id, e?.target?.checked)}
                 />
                 {isOpen && (
-                  <div className="flex items-center space-x-2 text-sm font-caption text-success">
-                    <Icon name="Clock" size={16} />
-                    <span>Aberto</span>
-                  </div>
-                )}
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  id={`day-${day.id}`}
+                  checked={isOpen}
+                  onCheckedChange={(checked) => handleDayToggle(day.id, checked)}
+                />
+                <Label htmlFor={`day-${day.id}`} className="text-sm font-medium">
+                  {day.label}
+                </Label>
               </div>
               {isOpen && (
                 <div className="grid grid-cols-2 gap-3 mt-3">

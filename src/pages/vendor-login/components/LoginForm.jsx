@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/ui/Button';
 import Input from '../../../components/ui/Input';
-import { Checkbox } from '../../../components/ui/Checkbox';
+import { Checkbox } from '../../../components/ui/shadcn/checkbox';
+import { Label } from '../../../components/ui/shadcn/label';
 import Icon from '../../../components/AppIcon';
 
 const LoginForm = ({ onSubmit, isLoading = false }) => {
@@ -112,13 +113,16 @@ const LoginForm = ({ onSubmit, isLoading = false }) => {
           </div>
 
           <div className="flex items-center justify-between">
-            <Checkbox
-              label="Lembrar de mim"
-              name="rememberMe"
-              checked={formData?.rememberMe}
-              onChange={handleInputChange}
-              size="sm"
-            />
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                id="remember-me"
+                checked={formData.rememberMe}
+                onCheckedChange={(checked) => setFormData(prev => ({ ...prev, rememberMe: checked }))}
+              />
+              <Label htmlFor="remember-me" className="text-sm font-medium">
+                Lembrar de mim
+              </Label>
+            </div>
             
             <button
               type="button"

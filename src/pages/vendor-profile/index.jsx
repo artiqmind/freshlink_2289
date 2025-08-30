@@ -3,7 +3,9 @@ import VendorSidebarNavigation from '../../components/ui/VendorSidebarNavigation
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import Select from '../../components/ui/Select';
-import { Checkbox } from '../../components/ui/Checkbox';
+import { Checkbox } from '../../components/ui/shadcn/checkbox';
+import { Label } from '../../components/ui/shadcn/label';
+import { Textarea } from '../../components/ui/shadcn/textarea';
 import Icon from '../../components/AppIcon';
 import Image from '../../components/AppImage';
 
@@ -201,15 +203,12 @@ const VendorProfile = () => {
       />
 
       <div>
-        <label className="block text-sm font-body font-medium text-foreground mb-2">
-          Descrição do Negócio
-        </label>
-        <textarea
+        <Textarea
+          label="Descrição do Negócio"
           value={profileData.description}
           onChange={(e) => handleInputChange('description', e.target.value)}
           disabled={!isEditing}
           rows={4}
-          className="w-full px-3 py-2 bg-background border border-border rounded-lg text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none disabled:opacity-50 disabled:cursor-not-allowed"
         />
       </div>
     </div>
@@ -329,12 +328,17 @@ const VendorProfile = () => {
         <h3 className="font-body font-medium text-foreground mb-4">Entrega</h3>
         
         <div className="space-y-4">
-          <Checkbox
-            label="Ofereço entrega"
-            checked={profileData.deliveryAvailable}
-            onChange={(e) => handleInputChange('deliveryAvailable', e.target.checked)}
-            disabled={!isEditing}
-          />
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id="delivery-available"
+              checked={profileData.deliveryAvailable}
+              onCheckedChange={(checked) => handleInputChange('deliveryAvailable', checked)}
+              disabled={!isEditing}
+            />
+            <Label htmlFor="delivery-available" className="text-sm font-medium">
+              Ofereço entrega
+            </Label>
+          </div>
 
           {profileData.deliveryAvailable && (
             <div className="grid grid-cols-2 gap-4 ml-6">
@@ -360,12 +364,17 @@ const VendorProfile = () => {
       <div className="border border-border rounded-lg p-4">
         <h3 className="font-body font-medium text-foreground mb-4">Retirada</h3>
         
-        <Checkbox
-          label="Permito retirada no local"
-          checked={profileData.pickupAvailable}
-          onChange={(e) => handleInputChange('pickupAvailable', e.target.checked)}
-          disabled={!isEditing}
-        />
+        <div className="flex items-center space-x-2">
+          <Checkbox
+            id="pickup-available"
+            checked={profileData.pickupAvailable}
+            onCheckedChange={(checked) => handleInputChange('pickupAvailable', checked)}
+            disabled={!isEditing}
+          />
+          <Label htmlFor="pickup-available" className="text-sm font-medium">
+            Permito retirada no local
+          </Label>
+        </div>
       </div>
 
       {/* Payment Methods */}
@@ -373,24 +382,39 @@ const VendorProfile = () => {
         <h3 className="font-body font-medium text-foreground mb-4">Formas de Pagamento</h3>
         
         <div className="space-y-3">
-          <Checkbox
-            label="Dinheiro"
-            checked={profileData.paymentMethods.includes('cash')}
-            onChange={(e) => handlePaymentMethodChange('cash', e.target.checked)}
-            disabled={!isEditing}
-          />
-          <Checkbox
-            label="PIX"
-            checked={profileData.paymentMethods.includes('pix')}
-            onChange={(e) => handlePaymentMethodChange('pix', e.target.checked)}
-            disabled={!isEditing}
-          />
-          <Checkbox
-            label="Cartão"
-            checked={profileData.paymentMethods.includes('card')}
-            onChange={(e) => handlePaymentMethodChange('card', e.target.checked)}
-            disabled={!isEditing}
-          />
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id="payment-cash"
+              checked={profileData.paymentMethods.includes('cash')}
+              onCheckedChange={(checked) => handlePaymentMethodChange('cash', checked)}
+              disabled={!isEditing}
+            />
+            <Label htmlFor="payment-cash" className="text-sm font-medium">
+              Dinheiro
+            </Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id="payment-pix"
+              checked={profileData.paymentMethods.includes('pix')}
+              onCheckedChange={(checked) => handlePaymentMethodChange('pix', checked)}
+              disabled={!isEditing}
+            />
+            <Label htmlFor="payment-pix" className="text-sm font-medium">
+              PIX
+            </Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id="payment-card"
+              checked={profileData.paymentMethods.includes('card')}
+              onCheckedChange={(checked) => handlePaymentMethodChange('card', checked)}
+              disabled={!isEditing}
+            />
+            <Label htmlFor="payment-card" className="text-sm font-medium">
+              Cartão
+            </Label>
+          </div>
         </div>
       </div>
     </div>

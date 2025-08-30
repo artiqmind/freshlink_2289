@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
-import { Checkbox } from '../../components/ui/Checkbox';
+import { Checkbox } from '../../components/ui/shadcn/checkbox';
+import { Label } from '../../components/ui/shadcn/label';
 import Icon from '../../components/AppIcon';
 import ResponsiveHeader from '../../components/ui/ResponsiveHeader';
 import Footer from '../../components/ui/Footer';
@@ -236,12 +237,16 @@ const Auth = () => {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <Checkbox
-                      label="Lembrar de mim"
-                      checked={formData.rememberMe}
-                      onChange={(e) => handleInputChange('rememberMe', e.target.checked)}
-                      size="sm"
-                    />
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="remember-me"
+                        checked={formData.rememberMe}
+                        onCheckedChange={(checked) => handleInputChange('rememberMe', checked)}
+                      />
+                      <Label htmlFor="remember-me" className="text-sm font-medium">
+                        Lembrar de mim
+                      </Label>
+                    </div>
                     
                     <button
                       type="button"
@@ -346,14 +351,12 @@ const Auth = () => {
                   </div>
 
                   <div className="flex items-start space-x-3 pt-2">
-                    <input
-                      type="checkbox"
+                    <Checkbox
                       id="terms"
                       checked={formData.termsAccepted}
-                      onChange={(e) => handleInputChange('termsAccepted', e.target.checked)}
-                      className="mt-1 w-4 h-4 text-primary bg-background border-border rounded focus:ring-primary focus:ring-2"
+                      onCheckedChange={(checked) => handleInputChange('termsAccepted', checked)}
                     />
-                    <label htmlFor="terms" className="text-sm font-body text-foreground">
+                    <Label htmlFor="terms" className="text-sm font-body text-foreground">
                       Eu aceito os{' '}
                       <button type="button" className="text-primary hover:underline">
                         Termos de Uso
@@ -362,7 +365,7 @@ const Auth = () => {
                       <button type="button" className="text-primary hover:underline">
                         Política de Privacidade
                       </button>
-                    </label>
+                    </Label>
                   </div>
 
                   {errors.termsAccepted && (

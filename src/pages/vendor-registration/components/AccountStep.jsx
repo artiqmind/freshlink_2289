@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Input from '../../../components/ui/Input';
 import Button from '../../../components/ui/Button';
+import { Checkbox } from '../../../components/ui/shadcn/checkbox';
+import { Label } from '../../../components/ui/shadcn/label';
 import Icon from '../../../components/AppIcon';
 
 const AccountStep = ({ formData, setFormData, onNext }) => {
@@ -110,14 +112,12 @@ const AccountStep = ({ formData, setFormData, onNext }) => {
         </div>
 
         <div className="flex items-start space-x-3 pt-2">
-          <input
-            type="checkbox"
+          <Checkbox
             id="terms"
             checked={formData?.termsAccepted || false}
-            onChange={(e) => handleInputChange('termsAccepted', e?.target?.checked)}
-            className="mt-1 w-4 h-4 text-primary bg-background border-border rounded focus:ring-primary focus:ring-2"
+            onCheckedChange={(checked) => handleInputChange('termsAccepted', checked)}
           />
-          <label htmlFor="terms" className="text-sm font-body text-foreground">
+          <Label htmlFor="terms" className="text-sm font-body text-foreground">
             Eu aceito os{' '}
             <button className="text-primary hover:underline">
               Termos de Uso
@@ -126,7 +126,7 @@ const AccountStep = ({ formData, setFormData, onNext }) => {
             <button className="text-primary hover:underline">
               Política de Privacidade
             </button>
-          </label>
+          </Label>
         </div>
         {errors?.termsAccepted && (
           <p className="text-error text-sm font-caption">{errors?.termsAccepted}</p>
