@@ -518,7 +518,7 @@ const ProductsPage = () => {
                         fullWidth
                         onClick={(e) => handleWhatsAppContact(product, e)}
                         disabled={!product.available}
-                        className="bg-success hover:bg-success/90 text-xs py-2"
+                        className=""
                     >
                         <div className="flex items-center justify-center space-x-1">
                             <span>{product.available ? 'Comprar por' : 'Indisponível'}</span>
