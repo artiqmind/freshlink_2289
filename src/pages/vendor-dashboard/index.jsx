@@ -175,7 +175,7 @@ const VendorDashboard = () => {
                   { value: '7d', label: '7 dias' },
                   { value: '30d', label: '30 dias' },
                   { value: '90d', label: '90 dias' }
-                ]?.map((range) => (
+                ].map((range) => (
                   <button
                     key={range?.value}
                     onClick={() => handleTimeRangeChange(range?.value)}

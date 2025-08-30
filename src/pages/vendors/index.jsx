@@ -472,28 +472,12 @@ const VendorsPage = () => {
                         <div className="flex items-center gap-3 mb-4">
                             {/* Search Bar */}
                             <div className="flex-1 max-w-md">
-                                <div className="relative">
-                                    <Icon 
-                                        name="Search" 
-                                        size={16} 
-                                        className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" 
-                                    />
-                                    <input
-                                        type="text"
-                                        placeholder="Buscar vendedores..."
-                                        value={searchQuery}
-                                        onChange={(e) => handleSearch(e.target.value)}
-                                        className="w-full pl-9 pr-4 py-2 bg-background border border-border rounded-lg text-sm font-body placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                                    />
-                                    {searchQuery && (
-                                        <button
-                                            onClick={handleClearSearch}
-                                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                                        >
-                                            <Icon name="X" size={14} />
-                                        </button>
-                                    )}
-                                </div>
+                                <Input
+                                    type="text"
+                                    placeholder="Buscar vendedores..."
+                                    value={searchQuery}
+                                    onChange={(e) => handleSearch(e.target.value)}
+                                />
                             </div>
 
                             {/* Filters and Actions */}

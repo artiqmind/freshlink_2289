@@ -6,6 +6,8 @@ import Footer from '../../components/ui/Footer';
 import SearchBar from '../../components/ui/SearchBar';
 import LocationSelector from '../../components/ui/LocationSelector';
 import Button from '../../components/ui/Button';
+import { Checkbox } from '../../components/ui/shadcn/checkbox';
+import { Label } from '../../components/ui/shadcn/label';
 import Icon from '../../components/AppIcon';
 import Image from '../../components/AppImage';
 
