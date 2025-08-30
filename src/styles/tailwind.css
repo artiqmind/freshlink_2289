@@ -68,15 +68,15 @@
 
 @layer utilities {
   .font-heading {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   
   .font-body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   
   .font-caption {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   
   .font-data {
