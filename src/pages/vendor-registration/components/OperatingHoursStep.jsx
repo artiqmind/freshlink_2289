@@ -117,11 +117,13 @@ const OperatingHoursStep = ({ formData, setFormData, onNext, onBack, onComplete 
           Quando os clientes podem entrar em contato
         </p>
       </div>
+      
       {errors?.general && (
         <div className="bg-error/10 border border-error/20 rounded-lg p-3">
           <p className="text-error text-sm font-caption">{errors?.general}</p>
         </div>
       )}
+      
       {/* Quick Actions */}
       <div className="flex flex-wrap gap-2 mb-6">
         <Button
@@ -143,6 +145,7 @@ const OperatingHoursStep = ({ formData, setFormData, onNext, onBack, onComplete 
           Limpar tudo
         </Button>
       </div>
+      
       {/* Days Configuration */}
       <div className="space-y-4">
         {daysOfWeek?.map(day => {
@@ -151,13 +154,6 @@ const OperatingHoursStep = ({ formData, setFormData, onNext, onBack, onComplete 
 
           return (
             <div key={day?.id} className="border border-border rounded-lg p-4">
-              <div className="flex items-center justify-between mb-3">
-                <Checkbox
-                  label={day?.label}
-                  checked={isOpen}
-                  onChange={(e) => handleDayToggle(day?.id, e?.target?.checked)}
-                />
-                {isOpen && (
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id={`day-${day.id}`}
@@ -168,6 +164,7 @@ const OperatingHoursStep = ({ formData, setFormData, onNext, onBack, onComplete 
                   {day.label}
                 </Label>
               </div>
+              
               {isOpen && (
                 <div className="grid grid-cols-2 gap-3 mt-3">
                   <div>
@@ -201,6 +198,7 @@ const OperatingHoursStep = ({ formData, setFormData, onNext, onBack, onComplete 
           );
         })}
       </div>
+      
       <div className="bg-muted/50 rounded-lg p-4 mt-6">
         <div className="flex items-start space-x-3">
           <Icon name="Info" size={20} className="text-primary mt-0.5 flex-shrink-0" />
@@ -214,6 +212,7 @@ const OperatingHoursStep = ({ formData, setFormData, onNext, onBack, onComplete 
           </div>
         </div>
       </div>
+      
       <div className="flex flex-col sm:flex-row gap-3 mt-8">
         <Button
           onClick={onBack}
