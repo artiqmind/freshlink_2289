@@ -6,7 +6,7 @@ import LocationSelector from '../../components/ui/LocationSelector';
 import ProductModal from '../../components/ui/ProductModal';
 import Icon from '../../components/AppIcon';
 import Image from '../../components/AppImage';
-import Button from '../../components/ui/Button';
+import Button from '../../components/ui/shadcn/Button';
 import Input from '../../components/ui/Input';
 
 const ProductsPage = () => {
